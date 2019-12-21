@@ -29,7 +29,7 @@ function hideLoginFailedMessage(){
   let loginFailedContainer = document.getElementById("loginFailedContainer");
   loginFailedContainer.style.transition = "all 1s";
   loginFailedContainer.style.bottom = "-150px";
-  visualLogin("rgb(255,255,255,0.2)");
+  changeCirclesColor("rgb(255,255,255,0.2)");
 }
 
 // Funções de comunicação com o back-end
