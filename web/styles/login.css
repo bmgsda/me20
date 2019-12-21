@@ -24,6 +24,15 @@ input:active, input:focus{
   box-shadow: none !important;
 }
 
+#loginFailedContainer{
+  bottom: -150px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  width: 300px;
+}
+
 /* Estilo do background animado - Créditos: mohaiman https://codepen.io/mohaiman/pen/MQqMyo */
 
 .area{
