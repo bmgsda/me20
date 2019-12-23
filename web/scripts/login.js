@@ -1,9 +1,12 @@
 // Funções para setar comportamentos a elementos (deve ser OnLoad)
 
-document.getElementById("passwordInput").addEventListener("keyup", event => {
-  if(event.key !== "Enter") return;
-  document.getElementById("loginButton").click();
-});
+window.onload = function(){
+  document.getElementById("racfInput").focus();
+  document.getElementById("passwordInput").addEventListener("keyup", event => {
+    if(event.key !== "Enter") return;
+    document.getElementById("loginButton").click();
+  });
+}
 
 // Funções de controle do front-end
 
@@ -32,15 +35,17 @@ function hideLoginFailedMessage(){
   changeCirclesColor("rgb(255,255,255,0.2)");
 }
 
-// Funções de comunicação com o back-end
+// Funções de comunicação com o back-end chamados pelo html
 
 async function requestLogin(){
-  let responseLogin = await eel.tryLogin(parent.document.getElementById("racfInput").value,
-                                         parent.document.getElementById("passwordInput").value)();
+  let responseLogin = await eel.tryLogin(document.getElementById("racfInput").value,
+                                         document.getElementById("passwordInput").value)();
   if(responseLogin == "success"){
     hideLoginFailedMessage();
     changeCirclesColor("rgb(0,204,0,0.8)");
+    setTimeout(() => window.location.href = "main.html", 1000);
   }
+
   else{
     showLoginFailedMessage(responseLogin);
     changeCirclesColor("rgb(204,0,0,0.8)");
