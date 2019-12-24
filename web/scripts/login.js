@@ -26,6 +26,19 @@ function showLoginFailedMessage(message){
   loginFailedContainer.style.bottom = "0";
 }
 
+function toggleLoginButtonSpinner(){
+  let loginButton = document.getElementById("loginButton");
+  let loginSpinner = document.getElementById("loginSpinner");
+  if(loginButton.style.display == "none"){
+    loginButton.style.display = "initial";
+    loginSpinner.style.display = "none";
+  }
+  else{
+    loginButton.style.display = "none";
+    loginSpinner.style.display = "inline-block";
+  }
+}
+
 // Funções de controle do front-end chamados pelo html
 
 function hideLoginFailedMessage(){
@@ -38,16 +51,19 @@ function hideLoginFailedMessage(){
 // Funções de comunicação com o back-end chamados pelo html
 
 async function requestLogin(){
+  toggleLoginButtonSpinner()
   let responseLogin = await eel.tryLogin(document.getElementById("racfInput").value,
                                          document.getElementById("passwordInput").value)();
   if(responseLogin == "success"){
     hideLoginFailedMessage();
     changeCirclesColor("rgb(0,204,0,0.8)");
     setTimeout(() => window.location.href = "main.html", 1000);
+    setTimeout(() => toggleLoginButtonSpinner(), 1100);
   }
 
   else{
     showLoginFailedMessage(responseLogin);
     changeCirclesColor("rgb(204,0,0,0.8)");
+    setTimeout(() => toggleLoginButtonSpinner(), 1000);
   }
 }

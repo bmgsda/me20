@@ -33,6 +33,10 @@ input:active, input:focus{
   width: 300px;
 }
 
+#loginSpinner{
+  display: none;
+}
+
 /* Estilo do background animado - Créditos: mohaiman https://codepen.io/mohaiman/pen/MQqMyo */
 
 .area{
