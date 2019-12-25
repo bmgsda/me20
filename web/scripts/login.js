@@ -1,4 +1,4 @@
-// Funções para setar comportamentos a elementos (deve ser OnLoad)
+// Funções para setar comportamentos a elementos
 
 window.onload = function(){
   document.getElementById("racfInput").focus();

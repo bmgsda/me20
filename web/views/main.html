@@ -13,6 +13,19 @@
     <!-- Container da Sidebar (Nav) -->
     <div class="sidebarContainer">
       <div class="menuContainer">
+        <!-- Container do Usuário -->
+        <div class="userContainer mb-5">
+          <table>
+            <tr>
+              <th class="styledTab" rowspan="2"></th>
+              <th class="ghostTab" rowspan="2"></th>
+              <th id="userName">Bruno Masunaga</th>
+            </tr>
+            <tr>
+              <td id="userRacf">tatsuya</td>
+            </tr>
+          </table>
+        </div>
         <!-- Links -->
         <button id="novoProjetoButton" class="sidebarButton mb-4"
           onclick="clickSidebarButton('novoProjetoButton');redirContent('frames/newProject.html')">
@@ -43,7 +56,7 @@
     </div>
     <!-- Container Principal (Conteúdo) -->
     <div class="contentContainer">
-      <iframe src="frames/overview.html" id="contentIframe" frameborder="0"></iframe>
+      <iframe src="frames/overview.html" name="contentIframe" frameborder="0"></iframe>
     </div>
   </body>
   <!-- Importação de JS -->

@@ -1,3 +1,10 @@
+// Funções onload
+document.body.onload = async function(){
+  let responseUserInfo = await eel.getSessionUserInfo()();
+  document.getElementById("userName").innerHTML = responseUserInfo["userName"];
+  document.getElementById("userRacf").innerHTML = responseUserInfo["userRacf"];
+}
+
 // Funções de controle do front-end chamados pelo html
 
 function clickSidebarButton(id){
@@ -7,7 +14,7 @@ function clickSidebarButton(id){
   button.className = "sidebarButtonActive mb-4";
 };
 
-function redirContent(url){
-  let iframe = document.getElementById('contentIframe');
-  iframe.src = url;
+async function redirContent(url){
+  await (window.frames["contentIframe"].location = url)();
+  window.frames["contentIframe"].location.reload(true);
 }

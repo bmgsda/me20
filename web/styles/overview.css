@@ -2,6 +2,7 @@ body{
   opacity: 0;
   transition: all 1s;
   margin-left: -1000px;
+  background-color: #f9f9f9;
 }
 
 .principalContainer{

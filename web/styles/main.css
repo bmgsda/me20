@@ -1,7 +1,7 @@
 .menuContainer{
   right: 0;
   left: 7%;
-  top: 10%;
+  top: 5%;
   margin: auto;
   position: absolute;
 }
@@ -48,6 +48,32 @@
   letter-spacing: 2px;
 }
 
+.userContainer{
+  width: 100%;
+  height: 3%;
+  font-family: Quicksand;
+  font-size: 1.3vw;
+  color: grey;
+}
+
+#userName{
+  color: white;
+}
+
+#userRacf{
+  font-size: 1.1vw;
+}
+
+.styledTab{
+  background-color: #5bc0de;
+  width:3px;
+}
+
+.ghostTab{
+  width:8px;
+}
+
+
 button:focus{
   outline:0;
 }
@@ -56,7 +82,7 @@ iframe{
   height: 100%;
   width: inherit;
   position: absolute;
-  transition: all 0.5s;
+  background-color: #f3f3f3;
 }
 
 body{
