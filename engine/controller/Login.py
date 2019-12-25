@@ -13,14 +13,11 @@ def c_tryLogin(racf, password):
         return "Usuário não cadastrado"
     else:
         userInfo = getUserInfo(racf,connection)
-        SessionProperties.connection = connection
-        SessionProperties.userRacf = racf
-        SessionProperties.userName = userInfo["name"]
-        SessionProperties.userEmail = userInfo["email"]
-        SessionProperties.userFuncional = userInfo["funcional"]
+        SessionProperties.setSessionProperties(connection, racf, userInfo["name"],
+                                               userInfo["email"], userInfo["funcional"])
         return "success"
 
-# Funções auxiliares
+# Funções de execução SQL
 
 def checkUser(racf, connection):
     searchUserQuery = SQLBuilder.checkUserSQL(racf)
@@ -31,8 +28,8 @@ def checkUser(racf, connection):
         return True
 
 def getUserInfo(racf, connection):
-    searchUserQuery = SQLBuilder.getUserInfoSQL(racf)
-    searchUserResult = pd.read_sql(searchUserQuery, connection)
-    return {"name": searchUserResult["usu_nome"].iloc[0],
-            "email": searchUserResult["usu_email"].iloc[0],
-            "funcional": searchUserResult["usu_funcional"].iloc[0]}
+    getUserInfoQuery = SQLBuilder.getUserInfoSQL(racf)
+    getUserInfoResult = pd.read_sql(getUserInfoQuery, connection)
+    return {"name": getUserInfoResult["usu_nome"].iloc[0],
+            "email": getUserInfoResult["usu_email"].iloc[0],
+            "funcional": getUserInfoResult["usu_funcional"].iloc[0]}
