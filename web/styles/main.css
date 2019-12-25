@@ -1,6 +1,14 @@
+.menuContainer{
+  right: 0;
+  left: 7%;
+  top: 10%;
+  margin: auto;
+  position: absolute;
+}
+
 .sidebarContainer{
   height: 100%;
-  width: 17%;
+  width: 15%;
   background-color: #191919;
   position: fixed;
   z-index: 1;
@@ -8,14 +16,47 @@
 
 .contentContainer{
   height: 100%;
-  width: 83%;
-  margin-left: 17%;
+  width: 85%;
+  margin-left: 15%;
+}
+
+.sidebarButton{
+  width: 100%;
+  background-color: rgba(0,0,0,0);
+  border-width: 0;
+  color: white;
+  font-family: Quicksand;
+  font-size: 1.1vw;
+  text-align: left;
+  transition: all 0.3s;
+}
+
+.sidebarButton:hover{
+  color: #5bc0de;
+  letter-spacing: 2px;
+}
+
+.sidebarButtonActive{
+  width: 100%;
+  background-color: rgba(0,0,0,0);
+  border-width: 0;
+  color: #5bc0de;
+  font-family: Quicksand;
+  font-size: 1.1vw;
+  text-align: left;
+  transition: all 0.3s;
+  letter-spacing: 2px;
+}
+
+button:focus{
+  outline:0;
 }
 
 iframe{
   height: 100%;
   width: inherit;
   position: absolute;
+  transition: all 0.5s;
 }
 
 body{
@@ -24,89 +65,4 @@ body{
   margin: 0px;
   overflow-x: hidden;
   overflow-y: hidden;
-}
-
-/* Estilo do background animado - Créditos: mohaiman https://codepen.io/mohaiman/pen/MQqMyo */
-
-.area{
-  background: #191919;
-}
-
-.circles{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.circles li{
-  position: absolute;
-  display: block;
-  list-style: none;
-  width: 20px;
-  height: 20px;
-  background: rgb(255,255,255,0.2);
-  animation: animate 25s linear infinite;
-  bottom: -150px;
-}
-
-.circles li:nth-child(1){
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2s;
-  animation-duration: 12s;
-}
-
-.circles li:nth-child(2){
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 4s;
-}
-
-.circles li:nth-child(3){
-  left: 40%;
-  width: 50px;
-  height: 50px;
-  animation-delay: 0s;
-  animation-duration: 18s;
-}
-
-.circles li:nth-child(4){
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-}
-
-.circles li:nth-child(5){
-  left: 50%;
-  width: 25px;
-  height: 25px;
-  animation-delay: 15s;
-  animation-duration: 45s;
-}
-
-.circles li:nth-child(6){
-  left: 20%;
-  width: 15px;
-  height: 15px;
-  animation-delay: 2s;
-  animation-duration: 35s;
-}
-
-@keyframes animate{
-  0%{
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-    border-radius: 0;
-  }
-  100%{
-    transform: translateY(-1000px) rotate(720deg);
-    opacity: 0;
-    border-radius: 50%;
-  }
 }

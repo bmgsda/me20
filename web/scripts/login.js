@@ -64,6 +64,6 @@ async function requestLogin(){
   else{
     showLoginFailedMessage(responseLogin);
     changeCirclesColor("rgb(204,0,0,0.8)");
-    setTimeout(() => toggleLoginButtonSpinner(), 1000);
+    setTimeout(() => toggleLoginButtonSpinner(), 500);
   }
 }
