@@ -20,8 +20,13 @@ def c_getSessionUserInfo():
 # Funções chamadas pela camada de controle
 
 def setSessionProperties(conn, racf, name, email, funcional):
-    connection = None
-    userRacf = None
-    userName = None
-    userEmail = None
-    userFuncional = None
+    global connection
+    global userRacf
+    global userName
+    global userEmail
+    global userFuncional
+    connection = conn
+    userRacf = racf
+    userName = name
+    userEmail = email
+    userFuncional = funcional
