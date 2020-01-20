@@ -1,35 +1,32 @@
-import pandas as pd
-from engine.dbConnection import CreateConnection
-from engine.dbConnection import SQLBuilder
-from engine.controller import SessionProperties
+from engine.controller import Session
+from engine.database import SQLExecutor
+from engine.gsda_resources.db_connection import ConnectionManager
 
 # Funções chamadas pela camada de exposição
-
-def c_tryLogin(racf, password):
-    connection = CreateConnection.createConnection(racf, password)
+def try_login(racf):
+    connection = ConnectionManager.create_connection()
     if (connection is None):
-        return "Falha de conexão ao SQL"
-    elif not (checkUser(racf, connection)):
-        return "Usuário não cadastrado"
+        return "Falha de conexão ao Banco de Dados"
     else:
-        userInfo = getUserInfo(racf,connection)
-        SessionProperties.setSessionProperties(connection, racf, userInfo["name"],
-                                               userInfo["email"], userInfo["funcional"])
-        return "success"
+        user_info = check_user(racf, connection)
+        if not (user_info):
+            return "Usuário não cadastrado"
+        else:
+            Session.set_session_connection(connection)
+            Session.set_session_user_data(user_info["id"], racf,
+                                          user_info["name"],
+                                          user_info["email"],
+                                          user_info["funcional"])
+            return "success"
 
-# Funções de execução SQL
-
-def checkUser(racf, connection):
-    searchUserQuery = SQLBuilder.checkUserSQL(racf)
-    searchUserResult = pd.read_sql(searchUserQuery, connection)
-    if (searchUserResult.empty):
+# Funções Auxiliares
+def check_user(racf, connection):
+    search_user_result = SQLExecutor.search_user(racf, connection)
+    if (search_user_result.empty):
         return False
     else:
-        return True
-
-def getUserInfo(racf, connection):
-    getUserInfoQuery = SQLBuilder.getUserInfoSQL(racf)
-    getUserInfoResult = pd.read_sql(getUserInfoQuery, connection)
-    return {"name": getUserInfoResult["usu_nome"].iloc[0],
-            "email": getUserInfoResult["usu_email"].iloc[0],
-            "funcional": getUserInfoResult["usu_funcional"].iloc[0]}
+        return {"id": search_user_result["usu_id"].iloc[0],
+                "racf": search_user_result["usu_racf"].iloc[0],
+                "name": search_user_result["usu_nome"].iloc[0],
+                "email": search_user_result["usu_email"].iloc[0],
+                "funcional": search_user_result["usu_funcional"].iloc[0]}

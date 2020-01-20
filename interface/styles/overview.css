@@ -1,0 +1,13 @@
+body{
+  opacity: 0;
+  transition: all 1s;
+  margin-left: -1000px;
+  background-color: #f9f9f9;
+}
+
+.principalContainer{
+  width: 94vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-top: 3vw;
+}

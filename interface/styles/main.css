@@ -1,0 +1,94 @@
+.menuContainer{
+  right: 0;
+  left: 7%;
+  top: 5%;
+  margin: auto;
+  position: absolute;
+}
+
+.sidebarContainer{
+  height: 100%;
+  width: 15%;
+  background-color: #191919;
+  position: fixed;
+  z-index: 1;
+}
+
+.contentContainer{
+  height: 100%;
+  width: 85%;
+  margin-left: 15%;
+}
+
+.sidebarButton{
+  width: 100%;
+  background-color: rgba(0,0,0,0);
+  border-width: 0;
+  color: white;
+  font-family: Quicksand;
+  font-size: 1.1vw;
+  text-align: left;
+  transition: all 0.3s;
+}
+
+.sidebarButton:hover{
+  color: #5bc0de;
+  letter-spacing: 2px;
+}
+
+.sidebarButtonActive{
+  width: 100%;
+  background-color: rgba(0,0,0,0);
+  border-width: 0;
+  color: #5bc0de;
+  font-family: Quicksand;
+  font-size: 1.1vw;
+  text-align: left;
+  transition: all 0.3s;
+  letter-spacing: 2px;
+}
+
+.userContainer{
+  width: 100%;
+  height: 3%;
+  font-family: Quicksand;
+  font-size: 1.3vw;
+  color: grey;
+}
+
+#userName{
+  color: white;
+}
+
+#userRacf{
+  font-size: 1.1vw;
+}
+
+.styledTab{
+  background-color: #5bc0de;
+  width:3px;
+}
+
+.ghostTab{
+  width:8px;
+}
+
+
+button:focus{
+  outline:0;
+}
+
+iframe{
+  height: 100%;
+  width: inherit;
+  position: absolute;
+  background-color: #f3f3f3;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
