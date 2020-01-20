@@ -1,16 +1,19 @@
 from engine.controller import Session
 from engine.database import SQLExecutor
 from engine.gsda_resources.db_connection import ConnectionManager
+from engine.gsda_resources.common import Util
 
 # Funções chamadas pela camada de exposição
-def try_login(racf):
+def try_login():
+    windows_user_info = Util.get_windows_user_info()
+    racf = windows_user_info['racf']
     connection = ConnectionManager.create_connection()
     if (connection is None):
         return "Falha de conexão ao Banco de Dados"
     else:
         user_info = check_user(racf, connection)
         if not (user_info):
-            return "Usuário não cadastrado"
+            return "Usuário "+racf+" não cadastrado"
         else:
             Session.set_session_connection(connection)
             Session.set_session_user_data(user_info["id"], racf,

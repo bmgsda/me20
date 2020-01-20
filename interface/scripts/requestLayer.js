@@ -1,7 +1,7 @@
 // Requisição de login
 async function requestLogin(){
   Login_toggleLoginButtonSpinner();
-  let responseLogin = await eel.requestLogin(document.getElementById("racfInput").value)();
+  let responseLogin = await eel.requestLogin()();
   Login_requestLoginReaction(responseLogin);
 }
 

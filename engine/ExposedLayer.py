@@ -6,8 +6,8 @@ from engine.controller import Session
 # Funções de exposição (API-like)
 
 @eel.expose
-def requestLogin(racf):
-    return Login.try_login(racf)
+def requestLogin():
+    return Login.try_login()
 
 @eel.expose
 def requestSessionUserInfo():
